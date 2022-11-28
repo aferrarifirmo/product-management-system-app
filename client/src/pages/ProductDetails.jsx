@@ -11,6 +11,7 @@ const ProductDetails = ( {trackId} ) => {
 
   const fetchProduct = useCallback( () => {
     getProductById(trackId).then(res => setProduct(res));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   useEffect(() => {

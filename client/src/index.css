@@ -6,11 +6,9 @@
   input {
     @apply w-[100%] border-[1px] h-10 mb-2 mt-1 p-3 rounded focus-visible:outline-[#3f9982];
   };
-
   textarea {
     @apply w-[100%] border-[1px] h-40 mb-2 mt-1 p-3 rounded focus-visible:outline-[#3f9982];
   };
-
   p {
     @apply font-light ml-1;
   };
