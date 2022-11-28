@@ -6,7 +6,6 @@ const farmSchema = new Schema ({
   farmers: {type: String, required: true},
   region: {type: String, required: true},
   country: {type: String, required: true},
-  size: Number,
   location: {
     longitude: String,
     latitude: String
