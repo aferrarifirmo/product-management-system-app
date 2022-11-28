@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { useRef, useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -8,15 +7,13 @@ import ProductDetails from './pages/ProductDetails';
 
 function App() {
 
-  const [trackId, setTrackId] = useState();
-
   return (
     <div className="">
       <Navbar />
       <Routes>
         <Route
           path='/'
-          element={<Home setTrackId={setTrackId}/>}
+          element={<Home />}
           >
         </Route>
         <Route
@@ -25,8 +22,8 @@ function App() {
           >
         </Route>
         <Route
-          path='/farm'
-          element={<ProductDetails trackId={trackId}/>}
+          path='/farm/:trackId'
+          element={<ProductDetails />}
           >
         </Route>
       </Routes>
