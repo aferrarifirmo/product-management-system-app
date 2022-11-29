@@ -20,7 +20,7 @@ const HomePage = ({setTrackId}) => {
     <>
       <h1>The farms</h1>
       <div className='md:h-full w-[100%] grid'>
-        <main className='grid grid-cols-1 md:grid-cols-3 gap-4 min-h-full w-[80%] justify-self-center'>
+        <main className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 min-h-full w-[80%] justify-self-center'>
         {products && 
         products.map((product, i) =>
           <Product

@@ -25,6 +25,12 @@
   #link {
     @apply text-[#3f9982] underline underline-offset-2 font-semibold
   }
+  h3 {
+    @apply mb-2;
+  }
+  h4 {
+    @apply text-[#3f9982] text-sm mb-0 font-semibold;
+  };
 };
 
 body {

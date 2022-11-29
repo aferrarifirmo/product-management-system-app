@@ -24,8 +24,6 @@ const EditProductForm = () => {
     fetchProduct();
   }, [fetchProduct]);
 
-  console.log(trackId)
-
   const handleSubmit = async (e) => {
     console.log(e)
     e.preventDefault();
@@ -45,7 +43,7 @@ const EditProductForm = () => {
       image: url
     };
     updateProduct(product._id, updatedProduct);
-    navigate('/');
+    navigate(`/farm/${product._id}`);
   };
 
   useEffect(() => {
@@ -114,10 +112,10 @@ const EditProductForm = () => {
       <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' onChange={onSelectFile}></input>
       {selectedFile ? <img className='place-self-center my-8 max-h-48' alt='preview' src={preview} /> :
       <img className='place-self-center my-8 max-h-48' alt='preview' src={product.image} /> }
-      <div className='flex place-content-center mt-8'>
+      <div className='flex place-content-around mt-8 md:place-content-center'>
         <Link to={`/farm/${product._id}`} className='btn-secondary'>Cancel</Link>
-        <Link to={'/'} className='btn-primary bg-[#f16b56] ml-8' onClick={deleteBtn}>Delete</Link>
-        <button className='btn-primary ml-8'>Submit</button>
+        <Link to={'/'} className='btn-primary bg-[#f16b56] md:ml-8' onClick={deleteBtn}>Delete</Link>
+        <button className='btn-primary md:ml-8'>Submit</button>
       </div>
     </form>
     }

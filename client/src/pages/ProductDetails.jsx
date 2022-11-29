@@ -6,7 +6,6 @@ const ProductDetails = () => {
 
   const { trackId } = useParams();
   const [product, setProduct] = useState();
-
   
   const fetchProduct = useCallback( () => {
     getProductById(trackId).then(res => setProduct(res));
@@ -24,12 +23,15 @@ const ProductDetails = () => {
         <div className='grid justify-items-center'>
         <h1>{product.name}</h1>
         <h1 className='font-serif text-base italic mt-4 text-[#2b343a]'>{product.shortDescription}</h1>
-        <div className='grid grid-cols-2 mt-8 w-[80%] bg-zinc-100 py-10'>
-          <img className='w-[70%] justify-self-center' alt='farm' src={product.image}></img>
-          <div>
+        <div className='grid mt-8 w-[80%] bg-zinc-100 py-10 md:grid-cols-2'>
+          <img className='w-[80%] justify-self-center' alt='farm' src={product.image}></img>
+          <div className='w-[80%] justify-self-center mt-8 md:justify-self-auto md:mt-0'>
+            <h4>Farmers:</h4>
             <h3>{product.farmers}</h3>
+            <h4>Location:</h4>
             <h3>{product.region}, {product.country}</h3>
-            <h3>Produce: {product.produce}</h3>
+            <h4>Produce:</h4>
+            <h3>{product.produce}</h3>
             <br/>
             {product.email && <><a id='link' href={`mailto:${product.email}?`}>E-mail</a><br/></>}
             {product.website && <><a id='link' href={product.website}>Website</a><br/></>}

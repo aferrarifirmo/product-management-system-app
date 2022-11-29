@@ -41,7 +41,7 @@ exports.deleteProduct = async (req, res) => {
     await product.findByIdAndDelete(req.params.id);
     console.log('All good from controller - deleteProduct');
     res.status(200);
-    res.send('Successfully deleted');
+    res.send(JSON.parse('Successfully deleted'));
   } catch (err) {
     console.log('Error from controller - deleteProduct');
     res.status(400);

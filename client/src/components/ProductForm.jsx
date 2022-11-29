@@ -92,7 +92,7 @@ const ProductForm = () => {
       <p>Facebook</p>
       <input></input>
       <p>Image</p>
-      <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' onChange={onSelectFile}></input>
+      <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' required onChange={onSelectFile}></input>
       {selectedFile && <img className='place-self-center my-8 max-h-48' alt='preview' src={preview} /> }
       <div className='flex place-content-center mt-8'>
         <button className='btn-secondary' onClick={handleClick}>Cancel</button>
