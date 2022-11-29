@@ -25,7 +25,6 @@ const EditProductForm = () => {
   }, [fetchProduct]);
 
   const handleSubmit = async (e) => {
-    console.log(e)
     e.preventDefault();
     const url = await uploadFile();
     const updatedProduct = {
@@ -45,10 +44,6 @@ const EditProductForm = () => {
     updateProduct(product._id, updatedProduct);
     navigate(`/farm/${product._id}`);
   };
-
-  useEffect(() => {
-    if (product) console.log(product.image);
-  }, [product]);
 
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
@@ -71,7 +66,6 @@ const EditProductForm = () => {
     }
     setSelectedFile(e.target.files[0])
     setImageUpload(e.currentTarget.files[0]);
-    console.log(imageUpload);
   };
 
   const uploadFile = async () => {

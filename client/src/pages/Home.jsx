@@ -13,8 +13,6 @@ const HomePage = ({setTrackId}) => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
-  
-  // console.log(products);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { addNewProduct } from "../utils/apiServices";
 import { useEffect, useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -14,8 +14,8 @@ const ProductForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log(e)
-    e.preventDefault();
+    try {
+      e.preventDefault();
     const url = await uploadFile();
     const newProduct = {
       name: e.target[0].value,
@@ -33,6 +33,9 @@ const ProductForm = () => {
     };
     addNewProduct(newProduct);
     navigate('/');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const [selectedFile, setSelectedFile] = useState();
@@ -56,7 +59,6 @@ const ProductForm = () => {
     }
     setSelectedFile(e.target.files[0])
     setImageUpload(e.currentTarget.files[0]);
-    console.log(imageUpload);
   };
 
   const uploadFile = async () => {
@@ -68,7 +70,7 @@ const ProductForm = () => {
   };
 
   return (
-    <form className='grid' onSubmit={handleSubmit}>
+    <form data-testid='form' className='grid' onSubmit={handleSubmit}>
       <p>Name</p>
       <input required></input>
       <p>One liner description</p>
@@ -95,8 +97,8 @@ const ProductForm = () => {
       <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' required onChange={onSelectFile}></input>
       {selectedFile && <img className='place-self-center my-8 max-h-48' alt='preview' src={preview} /> }
       <div className='flex place-content-center mt-8'>
-        <button className='btn-secondary' onClick={handleClick}>Cancel</button>
-        <button className='btn-primary ml-8'>Submit</button>
+        <Link to='/' data-testid='cancel-btn' className='btn-secondary'>Cancel</Link>
+        <button data-testid='submit-btn' className='btn-primary ml-8'>Submit</button>
       </div>
     </form>
   );
