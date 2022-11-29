@@ -22,8 +22,8 @@ const ProductDetails = () => {
       <>
         <div className='grid justify-items-center'>
         <h1>{product.name}</h1>
-        <h1 className='font-serif text-base italic mt-4 text-[#2b343a]'>{product.shortDescription}</h1>
-        <div className='grid mt-8 w-[80%] bg-zinc-100 py-10 md:grid-cols-2'>
+        <h1 className='font-serif text-base italic mt-0 md:mt-4 text-[#2b343a]'>{product.shortDescription}</h1>
+        <div className='grid mt-3 md:mt-8 w-[80%] bg-zinc-100 py-10 md:grid-cols-2'>
           <img className='w-[80%] justify-self-center' alt='farm' src={product.image}></img>
           <div className='w-[80%] justify-self-center mt-8 md:justify-self-auto md:mt-0'>
             <h4>Farmers:</h4>
