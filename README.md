@@ -1,16 +1,19 @@
 # Product Management System App
 
-This app is made for users to manage their products, whatever they are.
+This web application is made for users to manage their products.
 
 
 <p align="center" display="flex" gap="3px">
-
+  <img src="./client/src/assets/Home.png" width="270px" />
+  <img src="./client/src/assets/NewProduct.png" width="270px"/>
+  <img src="./client/src/assets/ProductDetails.png" width="270px"/>
+  <img src="./client/src/assets/EditProduct.png" width="270px"/>
 </p>
 
 
 ## Features
 
-  - Users can add, remove, edit and retrive products
+- Users can add, remove, edit and retrive products
   
 
 ## Tech Stack
@@ -56,3 +59,10 @@ npm start
 ## Author
 
 Ana Ferrari Firmo - [Github](https://github.com/aferrarifirmo) - [LinkedIn](https://www.linkedin.com/in/ana-ferrari-firmo)
+
+
+## Content
+
+For development purposes I used the farms Climate Farmers partner with as content.
+The logo, images and content belong to [Climate Farmers](https://www.climatefarmers.org/)
+
