@@ -1,13 +1,13 @@
 # Product Management System App
 
-This web application is made for users to manage their products.
+This app is a responsive web application made for users to manage their products.
 
 
 <p align="center" display="flex" gap="3px">
-  <img src="./client/src/assets/Home.png" width="270px" />
-  <img src="./client/src/assets/NewProduct.png" width="270px"/>
-  <img src="./client/src/assets/ProductDetails.png" width="270px"/>
-  <img src="./client/src/assets/EditProduct.png" width="270px"/>
+  <img src="./client/src/assets/Home.png" width="250px" />
+  <img src="./client/src/assets/NewProduct.png" width="250px"/>
+  <img src="./client/src/assets/ProductDetails.png" width="250px"/>
+  <img src="./client/src/assets/EditProduct.png" width="250px"/>
 </p>
 
 
