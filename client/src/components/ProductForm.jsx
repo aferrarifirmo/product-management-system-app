@@ -75,14 +75,14 @@ const ProductForm = () => {
       <input required></input>
       <p>Farmers</p>
       <input required></input>
-      <p required>Region</p>
+      <p>Region</p>
       <input required></input>
       <p>Country</p>
       <input required></input>
-      <p required>Produce</p>
-      <input></input>
-      <p required>Description</p>
-      <textarea></textarea>
+      <p>Produce</p>
+      <input required></input>
+      <p>Description</p>
+      <textarea required></textarea>
       <p>Website</p>
       <input></input>
       <p>Email</p>
