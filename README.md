@@ -7,7 +7,6 @@ This app is a responsive web application made for users to manage their products
   <img src="./client/src/assets/Home.png" width="250px" />
   <img src="./client/src/assets/NewProduct.png" width="250px"/>
   <img src="./client/src/assets/ProductDetails.png" width="250px"/>
-  <img src="./client/src/assets/EditProduct.png" width="250px"/>
 </p>
 
 
@@ -42,18 +41,24 @@ npm install
 #### 2. Turn on the server
 
 ```
+cd server
 nodemon index.js
 ```
-- make sure you are in the server folder
-
 
 
 #### 3. Run the React client from another terminal
 
 ``` 
+cd client
 npm start
 ```
-- make sure you are in the client folder
+
+#### Run tests
+
+``` 
+cd client
+npm test
+```
 
 
 ## Author
