@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import storage from '../utils/firebase';
 import { v4 } from "uuid";
@@ -11,7 +11,7 @@ const EditProductForm = () => {
   const { trackId } = useParams();
   const [product, setProduct] = useState();
   const navigate = useNavigate();
-  const imageUpload = useRef(null);
+  const [imageUpload, setImageUpload] = useState(null);
 
   const uploadFile = async () => {
     if (imageUpload === null) return;
@@ -24,7 +24,7 @@ const EditProductForm = () => {
   const deleteBtn = async () => {
     await deleteProduct(trackId);
   };
-  
+
   const fetchProduct = useCallback( () => {
     getProductById(trackId).then(res => setProduct(res));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,8 +34,9 @@ const EditProductForm = () => {
     fetchProduct();
   }, [fetchProduct]);
 
+  console.log(product)
+
   const handleSubmit = async (e) => {
-    try {
       e.preventDefault();
       const url = await uploadFile();
       const updatedProduct = {
@@ -54,9 +55,6 @@ const EditProductForm = () => {
       };
       updateProduct(product._id, updatedProduct);
       navigate(`/farm/${product._id}`);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -86,7 +84,7 @@ const EditProductForm = () => {
       <p>Facebook</p>
       <input type='text' aria-label='facebook' defaultValue={product.facebook}></input>
       <p>Image</p>
-      <ImageInput product={product}></ImageInput>
+      <ImageInput setImageUpload={setImageUpload} product={product}></ImageInput>
       <div className='flex place-content-around mt-8 md:place-content-center'>
         <Link to={`/farm/${product._id}`} className='btn-secondary' aria-label='cancel button'>Cancel</Link>
         <Link to={'/'} className='btn-primary bg-[#f16b56] md:ml-8' aria-label='delete button' onClick={deleteBtn}>Delete</Link>

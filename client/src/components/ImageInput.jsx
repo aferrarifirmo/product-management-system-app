@@ -4,6 +4,11 @@ const ImageInput = ( { setImageUpload, product }) => {
 
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
+  const [toggle, setToggle] = useState(true);
+
+  useEffect(() => {
+    if (product) setToggle(false);
+  }, [])
 
   useEffect(() => {
       if (!selectedFile) {
@@ -24,9 +29,11 @@ const ImageInput = ( { setImageUpload, product }) => {
     setImageUpload(e.currentTarget.files[0]);
   };
 
+  console.log(toggle);
+
   return (
     <>
-      <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' aria-label='image' required onChange={onSelectFile}></input>
+      <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' required={toggle} aria-label='image' onChange={onSelectFile}></input>
       {selectedFile ? <img className='place-self-center my-8 max-h-48' alt='preview' src={preview} /> :
       product ?
       <img className='place-self-center my-8 max-h-48' alt='preview' src={product.image} /> : <></> }
