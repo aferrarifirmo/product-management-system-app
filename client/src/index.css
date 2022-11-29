@@ -22,6 +22,9 @@
   h1 {
     @apply text-3xl m-4 mt-8 h-fit font-bold text-[#3f9982] text-center;
   }
+  #link {
+    @apply text-[#3f9982] underline underline-offset-2 font-semibold
+  }
 };
 
 body {

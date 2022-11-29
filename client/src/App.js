@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import ProductDetails from './pages/ProductDetails';
+import EditProduct from './pages/EditProduct';
 
 function App() {
 
@@ -24,6 +25,11 @@ function App() {
         <Route
           path='/farm/:trackId'
           element={<ProductDetails />}
+          >
+        </Route>
+        <Route
+          path='/edit/:trackId'
+          element={<EditProduct />}
           >
         </Route>
       </Routes>

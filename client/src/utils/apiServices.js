@@ -33,14 +33,14 @@ export const addNewProduct = async (product) => {
   };
 };
 
-export const updateProduct = async ({id, body}) => {
+export const updateProduct = async (id, body) => {
   try {
     const response = await fetch(process.env.REACT_APP_DB_URL + 'products/' + id, {
       method: 'PUT',
       headers: { 'Content-type': 'application/json; charset=UTF-8'},
       body: JSON.stringify(body)
     });
-    return response.json();
+    return await response.json();
   } catch (error) {
     console.log('Error from updateProduct in apiServices')
     alert('Unable to update Product');
@@ -52,7 +52,7 @@ export const deleteProduct = async (id) => {
     const response = await fetch(process.env.REACT_APP_DB_URL + 'products/' + id, {
       method: 'DELETE',
       headers: { 'Content-type': 'application/json; charset=UTF-8'},
-      body: JSON.stringify(id)
+      body: JSON.stringify({id})
     });
     return response.json();
   } catch (error) {

@@ -2,6 +2,8 @@ import ProductForm from "../components/ProductForm";
 
 const NewProduct = () => {
 
+  window.scrollTo({top: 0});
+
   return (
     <div className='grid'>
       <h1>Add a new farm</h1>
