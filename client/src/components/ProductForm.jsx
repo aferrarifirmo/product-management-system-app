@@ -1,16 +1,22 @@
 import { useNavigate, Link } from "react-router-dom";
 import { addNewProduct } from "../utils/apiServices";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import storage from '../utils/firebase';
 import { v4 } from "uuid";
+import ImageInput from "./ImageInput";
 
 const ProductForm = () => {
 
   const navigate = useNavigate();
+  const [imageUpload, setImageUpload] = useState(null);
 
-  const handleClick = () => {
-    navigate('/');
+  const uploadFile = async () => {
+    if (imageUpload === null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    const snapshot = await uploadBytes(imageRef, imageUpload);
+    const url = await getDownloadURL(snapshot.ref);
+    return url;
   };
 
   const handleSubmit = async (e) => {
@@ -38,67 +44,35 @@ const ProductForm = () => {
     }
   };
 
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
-  const [imageUpload, setImageUpload] = useState(null);
-
-  useEffect(() => {
-      if (!selectedFile) {
-        setPreview(undefined)
-        return;
-      }
-      const objectUrl = URL.createObjectURL(selectedFile)
-      setPreview(objectUrl)
-      return () => URL.revokeObjectURL(objectUrl)
-  }, [selectedFile])
-
-  const onSelectFile = (e) => {
-    if (!e.target.files) {
-      setSelectedFile(undefined);
-      return;
-    }
-    setSelectedFile(e.target.files[0])
-    setImageUpload(e.currentTarget.files[0]);
-  };
-
-  const uploadFile = async () => {
-    if (imageUpload === null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    const snapshot = await uploadBytes(imageRef, imageUpload);
-    const url = await getDownloadURL(snapshot.ref);
-    return url;
-  };
-
   return (
-    <form data-testid='form' className='grid' onSubmit={handleSubmit}>
+    <form data-testid='form' aria-label='form' className='grid' onSubmit={handleSubmit}>
       <p>Name</p>
-      <input required></input>
+      <input type='text' aria-label='name' required></input>
       <p>One liner description</p>
-      <input required></input>
+      <input type='text' aria-label='short description' required></input>
       <p>Farmers</p>
-      <input required></input>
+      <input type='text' aria-label='farmers' required></input>
       <p>Region</p>
-      <input required></input>
+      <input type='text' aria-label='region' required></input>
       <p>Country</p>
-      <input required></input>
+      <input type='text' aria-label='country' required></input>
       <p>Produce</p>
-      <input required></input>
+      <input type='text' aria-label='produce' required></input>
       <p>Description</p>
-      <textarea required></textarea>
+      <textarea type='text' aria-label='description' required></textarea>
       <p>Website</p>
-      <input></input>
+      <input type='text' aria-label='website'></input>
       <p>Email</p>
-      <input></input>
+      <input type='text' aria-label='email'></input>
       <p>Instagram</p>
-      <input></input>
+      <input type='text' aria-label='instagram'></input>
       <p>Facebook</p>
-      <input></input>
+      <input type='text' aria-label='facebook'></input>
       <p>Image</p>
-      <input className='h-full' type='file' accept='.jpg, .jpeg, .png, .gif' required onChange={onSelectFile}></input>
-      {selectedFile && <img className='place-self-center my-8 max-h-48' alt='preview' src={preview} /> }
+      <ImageInput setImageUpload={setImageUpload}></ImageInput>
       <div className='flex place-content-center mt-8'>
-        <Link to='/' data-testid='cancel-btn' className='btn-secondary'>Cancel</Link>
-        <button data-testid='submit-btn' className='btn-primary ml-8'>Submit</button>
+        <Link to='/' data-testid='cancel-btn' aria-label='cancel button' className='btn-secondary'>Cancel</Link>
+        <button data-testid='submit-btn' aria-label='submit button' className='btn-primary ml-8'>Submit</button>
       </div>
     </form>
   );
