@@ -12,7 +12,7 @@ This app is a responsive web application made for users to manage their products
 
 ## Features
 
-- Users can add, remove, edit and retrive products
+- Users can add, remove, edit and retrieve products
   
 
 ## Tech Stack
